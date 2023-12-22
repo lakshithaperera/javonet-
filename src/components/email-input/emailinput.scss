@@ -1,0 +1,130 @@
+section.email-input {
+    width: 688px !important;
+    margin: 16px 0;
+    padding: 24px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 8px;
+    transition:  0.3s ease-in-out;
+    @media screen and (max-width: 800px) {
+      width: 360px !important;
+      padding: 16px;
+    }
+    @media screen and (max-width: 365px) {
+      width: 320px !important;
+    }
+    &:focus-within {
+      background: var(--primary-variant);
+    }
+    &:hover{
+      background: var(--primary-variant);
+    }
+    h4{
+        font-size: 16px;
+        color: var(--primar-text-color);
+        font-weight: 600;
+        display: flex;
+        align-self: flex-start;
+    }
+    .emails-input-area {
+      width: 100%;
+      border: 1px solid #ccc;
+      background: var(--white);
+      border-radius: 4px;
+      padding: 5px;
+      transition: 0.4s;
+      cursor: text;
+      &:focus-within {
+        border: 1px solid var(--primary-color);
+      }
+    }
+  
+    .email-list {
+      width: 100%;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      row-gap: 5px;
+      column-gap: 5px;
+      flex-wrap: wrap;
+      padding: 0 4px;
+    }
+  
+    .email-item {
+      padding:  4px 8px;
+      background-color: var(--primary-variant);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 14px;
+      
+  
+      i {
+        cursor: pointer;
+        margin-left: 5px;
+        color: var(--primary-color);
+      }
+    
+    }
+  .email-item.email{
+    color: var( --primary-color);
+    font-size: 14px;
+    font-weight: 500;
+    
+  }
+  
+  .email-item.input{
+    width: 100%;
+    background: var(--white) !important;
+    border: none !important;
+    padding: 4px !important;
+    width: auto;
+    
+  }
+    #emailInput {
+      border: none;
+      outline: none;
+      border-radius: 4px;
+      font-size: 14px;
+      min-width: 400px;
+      @media screen and (max-width: 800px) {
+        min-width: 300px;
+      }
+      @media screen and (max-width: 365px) {
+        min-width: 250px;
+      }
+      &::-ms-input-placeholder {
+        /* Edge 12-18 */
+        color: #9fabc6;
+      }
+
+      &::placeholder {
+        color: #9fabc6;
+      }
+    }
+  
+  
+    p {
+        display: flex;
+        align-self: flex-start;
+        font-size: 13px;
+        color: var(--primar-text-color);
+        @media screen and (max-width: 800px) {
+          width: 328px;
+        }
+        @media screen and (max-width: 365px) {
+          width: 288px;
+        }
+        
+    }
+  }
+  
+  
+  
+  

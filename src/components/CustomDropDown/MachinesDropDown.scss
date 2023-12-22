@@ -1,0 +1,139 @@
+.custom-dropdown-machine {
+  position: relative;
+  width: 100%; // Set your desired width
+  padding: 24px 32px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease-in-out;
+  &.clicked {
+    background: var(--primary-variant);
+  }
+  &:hover {
+    background: var(--primary-variant);
+  }
+
+  h4 {
+    font-size: 16px;
+    color: var(--primar-text-color);
+    font-weight: 600;
+    letter-spacing: 0.3%;
+    margin-bottom: 8px;
+  }
+  .dropdown-header {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #9fabc6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--white);
+
+    &.active,
+    &:focus-within {
+      border: 1px solid var(--primary-color);
+    }
+
+    .dropdown-toggle {
+      color: #262e40;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .dropdown-toggle.active {
+      transform: rotate(180deg);
+    }
+  }
+  .dropdown-header.selected {
+    color: var(--primary-color) !important;
+    // Additional styles for the selected state
+  }
+
+  .dropdown-options {
+    position: absolute;
+    width: 624px;
+    list-style: none;
+    padding: 8px;
+    margin: 0;
+    max-height: 211px; // Set your desired max height for scrollability
+    overflow-y: scroll;
+    border-radius: 4px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    animation: fadeVisibility 0.5s;
+    transition:  0.5s ease-in-out;
+    z-index: 10;
+    &::-webkit-scrollbar {
+      width: 20px; /* width of the entire scrollbar */
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #e8eaec; /* color of the scroll thumb */
+      border-radius: 20px; /* roundness of the scroll thumb */
+      border: 6px solid var(--white); /* creates padding around scroll thumb */
+    }
+    
+    .option-label {
+      padding: 8px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition:  0.3s ease-in-out;
+      background: var(--white);
+      p{
+        font-size: 14px;
+        color: var(--primar-text-color);
+        font-weight: 400;
+      }
+      input {
+        cursor: pointer;
+      }
+      input[type="radio"] {
+        /* Add if not using autoprefixer */
+        -webkit-appearance: none;
+        appearance: none;
+        /* For iOS < 15 to remove gradient background */
+        background-color: #fff;
+        /* Not removed via appearance */
+        margin: 0;
+        font: inherit;
+        color: currentColor;
+        width: 16px;
+        height: 16px;
+        border: 2px solid var(--primary-variant);
+        border-radius: 50%;
+        outline: none;
+        display: grid;
+        place-content: center;
+        &::before {
+          content: "";
+          width: 9px;
+          height: 9px;
+          border-radius: 50%;
+          display: none;
+          background: var(--primary-color);
+        }
+        &:checked::before {
+          display: block;
+        }
+        &:checked{
+          border: 0.13em solid var(--primary-color);
+        }
+        &:checked ~ p{
+          color: var(--primary-color);
+        }
+      }
+
+      &:hover {
+        background: var(--primary-variant);
+      }
+      &.selected{
+        background: var(--primary-variant);
+      }
+    }
+  }
+}

@@ -1,0 +1,90 @@
+.nav-bar-login{
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--white);
+    z-index: 999;      
+    position: fixed;
+    top: 0;
+    
+    .wrapper{
+        padding: 16px 64px;
+        width: 100%;
+        display: flex;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        @media screen and (max-width: 1300px) {
+            padding: 16px;
+            padding-bottom: 2rem;
+          }
+        .logo{
+            cursor: pointer;
+            img{
+                width: 145.78px;
+                height: 24px;
+                @media screen and (max-width: 500px) {
+                    width: 146px;
+                  }
+                  @media screen and (max-width: 350px) {
+                    width: 120px;
+                  }
+            }
+        }
+        .btns{
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            @media screen and (max-width: 450px) {
+                gap: 8px;
+              }
+           .login-btn{
+                width: 63px;
+                height: 28px;
+                border: none;
+                background: var(--primary-variant);
+                padding: 4px;
+                font-size: 12px;
+                font-weight: 600;
+                letter-spacing: 1.4px;
+                border-radius: 4px;
+                color: var(--primary-color);
+                cursor: pointer;
+                transition: 0.4s;
+                &:hover{
+                    opacity: 0.9;
+                }
+                @media screen and (max-width: 450px) {
+                    font-size: 11px;
+                  }
+            }
+            span{
+                height: 20px;
+                width: 2px;
+                background: var(--primary-color);
+            }
+            .en-btn{
+                 width: 49px;
+                 height: 28px;
+                 background: transparent;
+                 display: flex;
+                 align-items: center;
+                 justify-content: center;  
+                 border: none;
+                 font-size: 12px;
+                 font-weight: 600;
+                 letter-spacing: 1.4px;
+                 color: var(--primary-color); 
+                 cursor: pointer;
+                 img{
+                    width: 20px;
+                    height: 20px;
+                 }
+                 @media screen and (max-width: 450px) {
+                    font-size: 11px;
+                  }
+             }
+        }
+    }
+}

@@ -1,23 +1,22 @@
-// src/App.js
-
-import React, { useState } from 'react';
 import './App.css';
-import LoginView from './LoginView';
-import TabsView from './TabsView';
+import CreateAccount from './pages/create-account/CreateAccount';
+import ProjectName from './pages/project-name/ProjectName';
+import SignIn from './pages/sign-in/SignIn';
+import { Routes, Route } from 'react-router-dom';
+import Summary from './pages/summary/Summary';
+
+
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   return (
-      <div className="App">
-        {!isLoggedIn ? (
-            <LoginView />
-        ) : (
-            <TabsView />
-        )}
-        {/* Mock login functionality */}
-        {!isLoggedIn && <button onClick={() => setIsLoggedIn(true)}>Mock Login</button>}
-      </div>
+    <Routes>
+           <Route path="sign-in" element={<SignIn />}></Route>
+           <Route path="create-account" element={<CreateAccount />}></Route>
+           <Route path="project" element={<ProjectName />}></Route>
+           <Route path='summary' element={<Summary />}></Route>
+    </Routes>
+    
+   
   );
 }
 

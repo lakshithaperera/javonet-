@@ -1,0 +1,152 @@
+// CustomDropdown.scss
+
+.custom-dropdown {
+    position: relative;
+    width: 100%;
+  
+    .dropdown-button {
+      position: relative;
+      width: 624PX;
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      background: var(--white);
+      border-radius: 4px;
+      color: #9FABC6;
+      font-size: 14px;
+      @media screen and (max-width: 800px) {
+        width: 328px;
+        font-size: 12px;
+      }
+      @media screen and (max-width: 365px) {
+        width: 288px;
+      }
+      &.active{
+        border: 1px solid var(--primary-color);
+      }
+      .drop-down-toggle-btn{
+        position: absolute;
+        right: 12px;
+        color: #262E40;
+        font-size: 24px;
+        cursor: pointer;
+      }
+      .drop-down-toggle-btn.active{
+        transform: rotate(180deg);
+      }
+      span{
+        padding:4px 8px;
+        background: var(--primary-variant);
+        margin-right: 8px;
+        border-radius: 4px;
+        font-size: 14px;
+        color: var(--primary-color);
+        font-weight: 500;
+        letter-spacing: 0.15%;
+        margin-bottom: 10px !important;
+        @media screen and (max-width: 800px) {
+          font-size: 11px;
+          margin-right: 5px;
+        }
+        i{
+          cursor: pointer;
+          font-size: 14px;
+          color: var(--primary-color);
+          margin-left: 8px !important;
+          @media screen and (max-width: 800px) {
+            font-size: 11px;
+            margin-left: 5px !important;
+          }
+        }
+      }
+    }
+  
+    .dropdown-content {
+      position: absolute;
+      width: 100%;
+      max-height: 212px; // Set the maximum height for the dropdown content
+      overflow-y: scroll;
+      display: none;
+      position: absolute;
+      background-color: var(--white);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      border-radius: 4px;
+      z-index: 1;
+      padding: 8px;
+      animation: fadeVisibility 0.5s;
+      transition:  0.5s ease-in-out;
+      .checkbox-container {
+        margin-bottom: 4px;
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        border-radius: 4px;
+        transition:  0.3s ease-in-out;
+        .checkbox-label {
+          width: 100%;
+          font-size: 14px;
+          margin-left: 8px;
+          color: var(--primar-text-color);
+        }
+        &.checked{
+          background: var(--primary-variant);
+        }
+        &:hover{
+          background: var(--primary-variant);
+        }
+        input[type=checkbox] {
+          /*
+          line-height: normal;
+          width: 16px;
+          height: 16px;
+          accent-color: var(--primary-color); */
+          -moz-appearance:none;
+	-webkit-appearance:none;
+	-o-appearance:none;
+	outline: none;
+	content: none;
+          &:before {
+            font-family: "FontAwesome";
+              content: "\f00c";
+              font-size: 12px;
+              color: transparent !important;
+              display: block;
+              width: 15px;
+              height: 15px;
+              border:1px solid #cac7c7;
+              margin-right: 7px;
+              border-radius: 2px;
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+          }
+          &:checked:before {
+            background: var(--primary-color);
+            color: var(--white) !important;
+          }
+          &:checked ~ .checkbox-label{
+            color: var(--primary-color);
+          }
+      }
+      }
+      &::-webkit-scrollbar {
+        width: 20px;               /* width of the entire scrollbar */
+      }
+    
+      &::-webkit-scrollbar-thumb {
+        background-color: #E8EAEC;    /* color of the scroll thumb */
+        border-radius: 20px;       /* roundness of the scroll thumb */
+        border: 6px solid var(--white);  /* creates padding around scroll thumb */
+      }
+
+    }
+  
+    &.open {
+      .dropdown-content {
+        display: block;
+      }
+    }
+    
+  }
+  

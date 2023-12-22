@@ -1,0 +1,84 @@
+.sign-in-g-fb{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h3{
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 77px;
+        @media screen and (max-width: 500px) {
+          font-size: 16px;
+          margin-bottom: 32px;
+        }
+    }
+   
+    .btns{
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        .fb{
+            width: 412.5px;
+            height: 54px;
+            border-radius: 4px;
+            padding: 15px;
+            background: #1877F2;
+            border: none;
+            font-size: 18px;
+            font-weight: 700;
+            font-family: 'Roboto', sans-serif;
+            color: var(--white);
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.4s;
+            &:hover{
+                opacity: 0.9;
+            }
+            .icon{
+                width: 25px;
+                height: 25px;
+            }
+            @media screen and (max-width: 500px) {
+              width: 264px;
+              height: 48px;
+              font-size: 14px;
+              justify-content: center;
+            }
+        }
+        .google{
+            width: 412.5px;
+            height: 54px;
+            border-radius: 4px;
+            padding: 15px;
+            border: none;
+            font-size: 18px;
+            font-weight: 700;
+            background: var(--white);
+            font-family: 'Roboto', sans-serif;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            color: var(--primar-text-color);
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.4s;
+            &:hover{
+                opacity: 0.9;
+            }
+            .icon{
+                width: 25px;
+                height: 25px;
+            }
+            @media screen and (max-width: 500px) {
+              width: 264px;
+              height: 48px;
+              font-size: 14px;
+              justify-content: center;
+            }
+        }
+    }
+}
