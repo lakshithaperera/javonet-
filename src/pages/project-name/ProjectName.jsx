@@ -30,6 +30,8 @@ export const ProjectForm = ({
   selectedOptions: initialSelectedOptions,
   isHelpCheckboxChecked,
   onHelpCheckboxChange,
+  emails,
+  
   
 }) => {
   const [contentBackgroundColor, setContentBackgroundColor] =
@@ -153,7 +155,10 @@ export const ProjectForm = ({
   };
 
 
-
+  const handleNumberOfEmailsChange = (formKey, count, emails) => {
+    onNumberOfEmailsChange(formKey, count, emails);
+  };
+  
 
   return (
     <>
@@ -286,10 +291,10 @@ export const ProjectForm = ({
                       .NET Core
                     </span>
                     <span
-                      className={isButtonSelected("CLR") ? "selected" : ""}
-                      onClick={() => handleCheckboxChange("CLR")}
+                      className={isButtonSelected("CRL") ? "selected" : ""}
+                      onClick={() => handleCheckboxChange("CRL")}
                     >
-                      CLR
+                      CRL
                     </span>
                     <span
                       className={isButtonSelected("Ruby") ? "selected" : ""}
@@ -352,10 +357,10 @@ export const ProjectForm = ({
                       .NET Core
                     </span>
                     <span
-                      className={isButtonSelected("CLR") ? "selected" : ""}
-                      onClick={() => handleCheckboxChange("CLR")}
+                      className={isButtonSelected("CRL") ? "selected" : ""}
+                      onClick={() => handleCheckboxChange("CRL")}
                     >
-                      CLR
+                      CRL
                     </span>
                     <span
                       className={isButtonSelected("Ruby") ? "selected" : ""}
@@ -380,7 +385,7 @@ export const ProjectForm = ({
                     <span>C#</span>
                     <span>JAR</span>
                     <span>Perl</span>
-                    <span>DLL</span>
+                    <span>JLL</span>
                   </div>
                 </div>
               </div>
@@ -447,9 +452,10 @@ export const ProjectForm = ({
         </div>
       </div>
       <div className="emails-container" onClick={handleEmailsClick}>
-        <EmailInput
-          onEmailsChange={(value) => onNumberOfEmailsChange(formKey, value)}
-        />
+      <EmailInput
+  onEmailsChange={(newEmails) => handleNumberOfEmailsChange(formKey,  newEmails, newEmails.length )}
+  initialEmails={emails} // Pass the correct prop for initialEmails
+/>
         <div id="help-content">
           { greateThan1300 && (
                <HelpSection
@@ -475,7 +481,7 @@ export const ProjectForm = ({
 };
 
 // Main component for the project page
-const ProjectName = () => {
+const ProjectName = ({ setProjectEmails }) => {
   
   const lessThan1300 = useMediaPredicate("(max-width: 1299px)");
 
@@ -492,6 +498,7 @@ const ProjectName = () => {
       selectedOptions: [],
       numberOfEmails: 0,
       projectName: "",
+      emails: [],
     },
   ]);
 
@@ -518,6 +525,7 @@ const ProjectName = () => {
         selectedOptions: [],
         numberOfEmails: 0,
         projectName: "",
+        emails: [],
       },
     ]);
   };
@@ -560,14 +568,14 @@ const ProjectName = () => {
     );
   };
 
-  const handleNumberOfEmailsChange = (formKey, value) => {
-    setProjectForms((prevForms) =>
-      prevForms.map((form) =>
-        form.key === formKey ? { ...form, numberOfEmails: value } : form
-      )
-    );
-  };
-
+ // Function to handle changes in the number of emails
+ const handleNumberOfEmailsChange = (formKey, emails, count) => {
+  const updatedForms = projectForms.map((form) =>
+    form.key === formKey ? { ...form, numberOfEmails: count, emails } : form
+  );
+  setProjectForms(updatedForms);
+  setProjectEmails(updatedForms.flatMap((form) => form.emails));
+};
   // State variable to track whether all forms are completed
   const [allFormsCompleted, setAllFormsCompleted] = useState(false);
 
@@ -591,6 +599,10 @@ const ProjectName = () => {
     // Navigate to the summary page when the button is clicked
     navigate("/summary", { state: { projectForms } });
   };
+
+  // ProjectName.jsx
+
+
 
   // JSX structure for the project page
   return (
@@ -618,7 +630,7 @@ const ProjectName = () => {
                 diagramCheckboxChecked={form.diagramCheckboxChecked}
                 handleCheckboxClick={handleCheckboxClick}
                 numberOfMachines={form.numberOfMachines}
-            onNumberOfMachinesChange={handleNumberOfMachinesChange}
+               onNumberOfMachinesChange={handleNumberOfMachinesChange}
                 onDeleteProject={handleDeleteProject}
                 onSelectedOptionsChange={handleSelectedOptionsChange}
                 onNumberOfEmailsChange={handleNumberOfEmailsChange}
@@ -626,6 +638,8 @@ const ProjectName = () => {
                 onProjectNameChange={handleProjectNameChange}
                 isHelpCheckboxChecked={isHelpCheckboxChecked}
                 onHelpCheckboxChange={handleHelpCheckboxChange}
+               
+               
               />
             </form>
           ))}

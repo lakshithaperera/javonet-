@@ -3,10 +3,10 @@ import "./emailinput.scss";
 
 
 // Component definition for an email input section
-const EmailInput = ({ onEmailsChange, initialNumberOfEmails   }) => {
+const EmailInput = ({ onEmailsChange, initialEmails   }) => {
   // State to manage the input value and the list of emails
   const [emailInput, setEmailInput] = useState("");
-  const [emails, setEmails] = useState(initialNumberOfEmails || []);
+  const [emails, setEmails] = useState(initialEmails || []);
   const inputRef = useRef(null);
 
   // Event handler for input value change
@@ -28,21 +28,24 @@ const EmailInput = ({ onEmailsChange, initialNumberOfEmails   }) => {
   const addEmail = () => {
     const trimmedEmail = emailInput.trim();
     if (trimmedEmail !== "") {
-      setEmails([...emails, trimmedEmail]);
+      setEmails((prevEmails) => {
+        const newEmails = [...prevEmails, trimmedEmail];
+        onEmailsChange( newEmails);
+        return newEmails;
+      });
       setEmailInput("");
-      // Notify the parent component of the updated list of emails
-      onEmailsChange(emails.length + 1);
     }
   };
 
-  // Function to remove an email from the list
-  const removeEmail = (index) => {
-    const updatedEmails = [...emails];
+// Function to remove an email from the list
+const removeEmail = (index) => {
+  setEmails((prevEmails) => {
+    const updatedEmails = [...prevEmails];
     updatedEmails.splice(index, 1);
-    setEmails(updatedEmails);
-    // Notify the parent component of the updated list of emails
-    onEmailsChange(updatedEmails.length);
-  };
+    onEmailsChange(updatedEmails);
+    return updatedEmails;
+  });
+};
 
   // Event handler for input blur
   const handleInputBlur = () => {

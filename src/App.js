@@ -1,3 +1,5 @@
+
+import React, { useState } from 'react';
 import './App.css';
 import CreateAccount from './pages/create-account/CreateAccount';
 import ProjectName from './pages/project-name/ProjectName';
@@ -8,12 +10,17 @@ import Summary from './pages/summary/Summary';
 
 
 function App() {
+  const [projectEmails, setProjectEmails] = useState([]);
+
   return (
     <Routes>
            <Route path="sign-in" element={<SignIn />}></Route>
            <Route path="create-account" element={<CreateAccount />}></Route>
-           <Route path="project" element={<ProjectName />}></Route>
-           <Route path='summary' element={<Summary />}></Route>
+           <Route
+        path="project"
+        element={<ProjectName setProjectEmails={setProjectEmails} />}
+      />
+      <Route path="summary" element={<Summary projectEmails={projectEmails} />} />
     </Routes>
     
    

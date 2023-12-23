@@ -36,6 +36,8 @@ export const ProjectDropDown = ({
     setDiagramCheckboxChecked(!diagramCheckboxChecked);
   };
 
+
+
   return (
     <div className="project-drop-down">
       <div className="header" onClick={toggleDropDown}>
@@ -72,6 +74,8 @@ export const ProjectDropDown = ({
             initialNumberOfEmails={projectData.numberOfEmails}
             isHelpCheckboxChecked={isHelpCheckboxChecked}
             onHelpCheckboxChange={onHelpCheckboxChange}
+            emails={projectData.emails || []}
+            
           />
         </div>
       )}
@@ -84,6 +88,7 @@ const Summary = () => {
   const { projectForms: initialProjectForms } = location.state || {};
   const [projectForms, setProjectForms] = useState(initialProjectForms || []);
 const lessThan1300 = useMediaPredicate("(max-width: 1299px)");
+
 
 // State and function for the help checkbox
 const [isHelpCheckboxChecked, setIsHelpCheckboxChecked] = useState(true);
@@ -119,12 +124,12 @@ const [isHelpCheckboxChecked, setIsHelpCheckboxChecked] = useState(true);
     );
   };
 
-  const handleNumberOfEmailsChange = (formKey, value) => {
-    setProjectForms((prevForms) =>
-      prevForms.map((form) =>
-        form.key === formKey ? { ...form, numberOfEmails: value } : form
-      )
+  const handleNumberOfEmailsChange = (formKey, emails, count) => {
+    const updatedForms = projectForms.map((form) =>
+      form.key === formKey ? { ...form, numberOfEmails: count, emails } : form
     );
+    setProjectForms(updatedForms);
+    
   };
 
   const handleNewProjectClick = () => {
@@ -136,6 +141,7 @@ const [isHelpCheckboxChecked, setIsHelpCheckboxChecked] = useState(true);
       selectedOptions: [],
       numberOfEmails: 0,
       projectName: "",
+      emails: [],
     };
 
     // Add the new project to the beginning of the array
@@ -177,6 +183,8 @@ const [isHelpCheckboxChecked, setIsHelpCheckboxChecked] = useState(true);
       onDeleteProject={handleDeleteProject}
       isHelpCheckboxChecked={isHelpCheckboxChecked}
      onHelpCheckboxChange={handleHelpCheckboxChange}
+     emails={project.emails || []}
+     
     />
   ))}
             </div>
