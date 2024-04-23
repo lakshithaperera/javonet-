@@ -17,7 +17,7 @@ function App() {
            <Route path="sign-in" element={<SignIn />}></Route>
            <Route path="create-account" element={<CreateAccount />}></Route>
            <Route
-        path="/"
+        path="project"
         element={<ProjectName setProjectEmails={setProjectEmails} />}
       />
       <Route path="summary" element={<Summary projectEmails={projectEmails} />} />
